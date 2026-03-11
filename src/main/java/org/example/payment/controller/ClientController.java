@@ -1,6 +1,8 @@
 package org.example.payment.controller;
 
 
+import org.example.payment.dto.Client.ClientRequestDTO;
+import org.example.payment.dto.Client.ClientResponseDTO;
 import org.example.payment.model.Client;
 import org.example.payment.service.ClientService;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +18,12 @@ public class ClientController {
     }
 
     @GetMapping("/{codigoCliente}")
-    public Client getClient(@PathVariable String codigoCliente) {
+    public ClientResponseDTO getClient(@PathVariable String codigoCliente) {
         return clientService.getClient(codigoCliente);
     }
 
     @PostMapping
-    public Client createClient(@RequestBody Client client) {
+    public ClientResponseDTO createClient(@RequestBody ClientRequestDTO client) {
         return clientService.createClient(client);
     }
 
